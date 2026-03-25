@@ -153,28 +153,28 @@
                 </h1>
 
                 <div id="platformsList" class="flex flex-col items-end gap-3 font-bold text-[28px] uppercase tracking-[0.08em] text-right text-white/90 transition-transform duration-500" style="font-family: 'Syne', sans-serif;" vid="22">
-                    <div class="flex items-center gap-3 cursor-default transition-transform duration-200 origin-right active:scale-110" vid="23">
-                        <i class="ph-fill ph-tiktok-logo text-lg opacity-60" vid="24"></i>
+                    <div class="platform-item flex items-center gap-3 cursor-default transition-all duration-200 origin-right active:scale-110" vid="23">
+                        <i class="ph-fill ph-tiktok-logo text-lg transition-colors duration-200" style="color: rgba(255,255,255,0.4);" data-color="#ff0050"></i>
                         <span class="glitch" data-text="TIKTOK">TIKTOK</span>
                     </div>
-                    <div class="flex items-center gap-3 cursor-default transition-transform duration-200 origin-right active:scale-110" vid="25">
-                        <i class="ph-fill ph-youtube-logo text-lg opacity-60" vid="26"></i>
+                    <div class="platform-item flex items-center gap-3 cursor-default transition-all duration-200 origin-right active:scale-110" vid="25">
+                        <i class="ph-fill ph-youtube-logo text-lg transition-colors duration-200" style="color: rgba(255,255,255,0.4);" data-color="#FF0000"></i>
                         <span class="glitch" data-text="YOUTUBE">YOUTUBE</span>
                     </div>
-                    <div class="flex items-center gap-3 cursor-default transition-transform duration-200 origin-right active:scale-110" vid="27">
-                        <i class="ph-fill ph-x-logo text-lg opacity-60" vid="28"></i>
+                    <div class="platform-item flex items-center gap-3 cursor-default transition-all duration-200 origin-right active:scale-110" vid="27">
+                        <i class="ph-fill ph-x-logo text-lg transition-colors duration-200" style="color: rgba(255,255,255,0.4);" data-color="#ffffff"></i>
                         <span class="glitch" data-text="TWITTER">TWITTER</span>
                     </div>
-                    <div class="flex items-center gap-3 cursor-default transition-transform duration-200 origin-right active:scale-110" vid="29">
-                        <i class="ph-fill ph-telegram-logo text-lg opacity-60" vid="30"></i>
+                    <div class="platform-item flex items-center gap-3 cursor-default transition-all duration-200 origin-right active:scale-110" vid="29">
+                        <i class="ph-fill ph-telegram-logo text-lg transition-colors duration-200" style="color: rgba(255,255,255,0.4);" data-color="#2AABEE"></i>
                         <span class="glitch" data-text="TELEGRAM">TELEGRAM</span>
                     </div>
-                    <div class="flex items-center gap-3 cursor-default transition-transform duration-200 origin-right active:scale-110" vid="31">
-                        <i class="ph-fill ph-instagram-logo text-lg opacity-60" vid="32"></i>
+                    <div class="platform-item flex items-center gap-3 cursor-default transition-all duration-200 origin-right active:scale-110" vid="31">
+                        <i class="ph-fill ph-instagram-logo text-lg transition-colors duration-200" style="color: rgba(255,255,255,0.4);" data-color="#E1306C"></i>
                         <span class="glitch" data-text="INSTAGRAM">INSTAGRAM</span>
                     </div>
-                    <div class="flex items-center gap-3 cursor-default transition-transform duration-200 origin-right active:scale-110" vid="33">
-                        <i class="ph-fill ph-chat-centered-text text-lg opacity-60" vid="34"></i>
+                    <div class="platform-item flex items-center gap-3 cursor-default transition-all duration-200 origin-right active:scale-110" vid="33">
+                        <i class="ph-fill ph-chat-centered-text text-lg transition-colors duration-200" style="color: rgba(255,255,255,0.4);" data-color="#000000"></i>
                         <span class="glitch" data-text="THREADS">THREADS</span>
                     </div>
                 </div>
@@ -274,23 +274,32 @@
     </footer>
 
     <script>
-        // Expand Telegram Mini App to full screen
-        if (window.Telegram?.WebApp) {
-            window.Telegram.WebApp.expand();
-        }
+        if (window.Telegram?.WebApp) window.Telegram.WebApp.expand();
 
-        // Touch support for hover effects
+        // Platform icon color on hover/touch
+        document.querySelectorAll('.platform-item').forEach(item => {
+            const icon = item.querySelector('i');
+            const brandColor = icon.dataset.color;
+
+            const activate = () => { icon.style.color = brandColor; item.style.transform = 'scale(1.1)'; };
+            const deactivate = () => { icon.style.color = 'rgba(255,255,255,0.4)'; item.style.transform = ''; };
+
+            item.addEventListener('mouseenter', activate);
+            item.addEventListener('mouseleave', deactivate);
+            item.addEventListener('touchstart', activate, {passive: true});
+            item.addEventListener('touchend', () => setTimeout(deactivate, 300), {passive: true});
+        });
+
+        // Touch for asteroid group
         document.addEventListener('touchstart', function(e) {
-            const target = e.target.closest('.group');
-            if (target) target.classList.add('touched');
+            const g = e.target.closest('.group');
+            if (g) g.classList.add('touched');
             const vt = e.target.closest('.vertical-text');
             if (vt) vt.classList.add('touched');
-        });
-        document.addEventListener('touchend', function(e) {
-            setTimeout(() => {
-                document.querySelectorAll('.touched').forEach(el => el.classList.remove('touched'));
-            }, 300);
-        });
+        }, {passive: true});
+        document.addEventListener('touchend', function() {
+            setTimeout(() => document.querySelectorAll('.touched').forEach(el => el.classList.remove('touched')), 300);
+        }, {passive: true});
     </script>
     <script vid="78">
         document.addEventListener('DOMContentLoaded', () => {
