@@ -1,0 +1,330 @@
+<html vid="0"><head vid="1">
+    <meta charset="UTF-8" vid="2">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" vid="3">
+    <title vid="4">Rockford Automation - Digital Profile</title>
+    <script src="https://cdn.tailwindcss.com/3.4.17" vid="5"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Anton&family=Syne:wght@700;800&display=swap" rel="stylesheet" vid="6">
+    <script src="https://unpkg.com/@phosphor-icons/web" vid="7"></script>
+    <script vid="8">
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Space Grotesk', 'sans-serif'],
+                        display: ['Anton', 'sans-serif'],
+                    },
+                    colors: {
+                        'brand-pink': '#ffb1cc',
+                        'brand-lime': '#ccff00',
+                        'brand-dark': '#0a0a0c',
+                    }
+                }
+            }
+        }
+    </script>
+    <style vid="9">
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            -webkit-tap-highlight-color: transparent;
+            background-color: #000;
+        }
+
+        .bg-grid {
+            background-image:
+                linear-gradient(rgba(29, 191, 115, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(29, 191, 115, 0.1) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            transform: rotate(180deg);
+            transition: all 0.5s ease;
+        }
+        .vertical-text:hover {
+            transform: rotate(180deg) scaleY(1.08);
+        }
+        .text-glow {
+            text-shadow: 0 0 24px rgba(29, 191, 115, 0.4);
+        }
+
+        .asteroid-ring {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transform-style: preserve-3d;
+            perspective: 300px;
+        }
+
+        .asteroid {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            transform-style: preserve-3d;
+        }
+
+        .group:hover .asteroid {
+            opacity: 1;
+        }
+
+        .asteroid-1 { width: 4px; height: 4px; background: #1dbf73; box-shadow: 0 0 8px #1dbf73; top: 50%; left: 50%; margin-top: -2px; margin-left: -2px; animation: orbit1 3s linear infinite; }
+        .asteroid-2 { width: 3px; height: 3px; background: #40ffb0; box-shadow: 0 0 6px #40ffb0; top: 50%; left: 50%; margin-top: -1.5px; margin-left: -1.5px; animation: orbit2 4s linear infinite; }
+        .asteroid-3 { width: 5px; height: 5px; background: #ccff00; box-shadow: 0 0 10px #ccff00; top: 50%; left: 50%; margin-top: -2.5px; margin-left: -2.5px; animation: orbit3 5s linear infinite; }
+        .asteroid-4 { width: 3px; height: 3px; background: #ffb1cc; box-shadow: 0 0 6px #ffb1cc; top: 50%; left: 50%; margin-top: -1.5px; margin-left: -1.5px; animation: orbit4 6s linear infinite; }
+        .asteroid-5 { width: 6px; height: 6px; background: white; box-shadow: 0 0 12px rgba(255, 255, 255, 0.8); top: 50%; left: 50%; margin-top: -3px; margin-left: -3px; animation: orbit5 7s linear infinite; }
+
+        @keyframes orbit1 { 0% { transform: rotate(0deg) translateX(40px) rotateX(45deg); z-index: -1; } 50% { z-index: 10; } 100% { transform: rotate(360deg) translateX(40px) rotateX(45deg); z-index: -1; } }
+        @keyframes orbit2 { 0% { transform: rotate(180deg) translateX(50px) rotateX(45deg); z-index: -1; } 50% { z-index: 10; } 100% { transform: rotate(540deg) translateX(50px) rotateX(45deg); z-index: -1; } }
+        @keyframes orbit3 { 0% { transform: rotate(90deg) translateX(60px) rotateX(45deg); z-index: -1; } 50% { z-index: 10; } 100% { transform: rotate(450deg) translateX(60px) rotateX(45deg); z-index: -1; } }
+        @keyframes orbit4 { 0% { transform: rotate(270deg) translateX(70px) rotateX(45deg); z-index: -1; } 50% { z-index: 10; } 100% { transform: rotate(630deg) translateX(70px) rotateX(45deg); z-index: -1; } }
+        @keyframes orbit5 { 0% { transform: rotate(45deg) translateX(85px) rotateX(45deg); z-index: -1; } 50% { z-index: 10; } 100% { transform: rotate(405deg) translateX(85px) rotateX(45deg); z-index: -1; } }
+
+        .glitch {
+            position: relative;
+        }
+        .glitch::before,
+        .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+        }
+        .glitch::before {
+            color: #ff0055;
+            animation: glitch-before 2s infinite;
+            clip-path: polygon(0 20%, 100% 20%, 100% 40%, 0 40%);
+        }
+        .glitch::after {
+            color: #00ffcc;
+            animation: glitch-after 2s infinite;
+            clip-path: polygon(0 60%, 100% 60%, 100% 80%, 0 80%);
+        }
+        @keyframes glitch-before {
+            0%, 40%, 100% { opacity: 0; transform: none; }
+            42% { opacity: 1; transform: translateX(-3px); }
+            44% { opacity: 1; transform: translateX(3px); }
+            46% { opacity: 0; }
+            70%, 72% { opacity: 1; transform: translateX(-2px); }
+            74% { opacity: 0; }
+        }
+        @keyframes glitch-after {
+            0%, 40%, 100% { opacity: 0; transform: none; }
+            43% { opacity: 1; transform: translateX(3px); }
+            45% { opacity: 1; transform: translateX(-2px); }
+            47% { opacity: 0; }
+            71%, 73% { opacity: 1; transform: translateX(2px); }
+            75% { opacity: 0; }
+        }
+    </style>
+</head>
+<body class="w-[390px] h-[844px] text-white font-sans flex flex-col relative select-none mx-auto overflow-hidden bg-black" vid="10">
+
+    <header class="w-full h-[48px] bg-[#0a1628] text-[#1dbf73] flex items-center justify-between px-5 border-b border-[#1dbf73]/20 z-30 shrink-0" vid="11">
+        <div class="text-[11px] font-bold tracking-[0.15em] uppercase flex items-center gap-2" vid="12">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#1dbf73] animate-pulse"></span>
+            PYTHON AUTOMATION
+        </div>
+        <div class="text-[11px] font-mono tracking-widest text-[#1dbf73]/60" vid="13">SYS_READY</div>
+    </header>
+
+    <main class="flex-1 w-full relative overflow-hidden bg-brand-dark" vid="14">
+
+        <div class="w-full h-full bg-[#0a1628] relative flex flex-col justify-between p-5" vid="15">
+            <div class="absolute inset-0 z-0 bg-grid opacity-50" vid="16"></div>
+
+            <div id="menuToggle" class="text-[#1dbf73] text-[10px] font-bold tracking-[0.15em] relative z-10 text-right flex items-center justify-end gap-2 mt-1" vid="17">
+                <span id="workText" class="transition-all duration-300" vid="18">WORK</span> / <span id="projectsText" class="border-b-[3px] border-[#1dbf73] pb-[2px] transition-all duration-300" vid="19">PROJECTS</span>
+            </div>
+
+            <div class="absolute inset-0 flex items-center justify-between z-10 overflow-hidden px-5" vid="20">
+                <h1 class="vertical-text font-display text-[72px] leading-[0.8] uppercase tracking-normal text-[#1dbf73] text-center text-glow ml-5 hover:text-[#40ffb0] hover:drop-shadow-[0_0_40px_rgba(29,191,115,1)] transition-all duration-500 cursor-pointer" vid="21">
+                    Automation
+                </h1>
+
+                <div id="platformsList" class="flex flex-col items-end gap-3 font-bold text-[28px] uppercase tracking-[0.08em] text-right text-white/90 transition-transform duration-500" style="font-family: 'Syne', sans-serif;" vid="22">
+                    <div class="flex items-center gap-3 cursor-default hover:scale-110 transition-transform duration-200 origin-right" vid="23">
+                        <i class="ph-fill ph-tiktok-logo text-lg opacity-60" vid="24"></i>
+                        <span class="glitch" data-text="TIKTOK">TIKTOK</span>
+                    </div>
+                    <div class="flex items-center gap-3 cursor-default hover:scale-110 transition-transform duration-200 origin-right" vid="25">
+                        <i class="ph-fill ph-youtube-logo text-lg opacity-60" vid="26"></i>
+                        <span class="glitch" data-text="YOUTUBE">YOUTUBE</span>
+                    </div>
+                    <div class="flex items-center gap-3 cursor-default hover:scale-110 transition-transform duration-200 origin-right" vid="27">
+                        <i class="ph-fill ph-x-logo text-lg opacity-60" vid="28"></i>
+                        <span class="glitch" data-text="TWITTER">TWITTER</span>
+                    </div>
+                    <div class="flex items-center gap-3 cursor-default hover:scale-110 transition-transform duration-200 origin-right" vid="29">
+                        <i class="ph-fill ph-telegram-logo text-lg opacity-60" vid="30"></i>
+                        <span class="glitch" data-text="TELEGRAM">TELEGRAM</span>
+                    </div>
+                    <div class="flex items-center gap-3 cursor-default hover:scale-110 transition-transform duration-200 origin-right" vid="31">
+                        <i class="ph-fill ph-instagram-logo text-lg opacity-60" vid="32"></i>
+                        <span class="glitch" data-text="INSTAGRAM">INSTAGRAM</span>
+                    </div>
+                    <div class="flex items-center gap-3 cursor-default hover:scale-110 transition-transform duration-200 origin-right" vid="33">
+                        <i class="ph-fill ph-chat-centered-text text-lg opacity-60" vid="34"></i>
+                        <span class="glitch" data-text="THREADS">THREADS</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="terminalOverlay" class="absolute top-[100px] right-[5px] bottom-[100px] w-[70%] max-w-[280px] bg-[#0a1628]/95 backdrop-blur-sm z-20 opacity-0 pointer-events-none transition-opacity duration-300 flex items-start justify-start p-4 font-mono text-[11px] border-l border-[#1dbf73]/50 overflow-hidden shadow-[-10px_0_20px_rgba(10,22,40,0.8)]" vid="35">
+                <div id="terminalText" class="text-[#1dbf73] leading-relaxed w-full" vid="36"></div>
+            </div>
+
+            <div class="relative z-10 flex justify-between items-end mb-4 text-[#1dbf73]" vid="37">
+                <button onclick="document.getElementById('faqModal').classList.remove('hidden')" class="w-10 h-10 border-2 border-[#1dbf73] rounded flex items-center justify-center hover:bg-[#1dbf73] hover:text-[#0a1628] transition-colors active:scale-95 group bg-[#0a1628]/80 backdrop-blur-sm" vid="38">
+                    <i class="ph ph-arrow-up-right text-lg group-hover:rotate-45 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" vid="39"></i>
+                </button>
+                <div class="text-[9px] font-bold uppercase opacity-80 leading-tight tracking-wider text-right" vid="40">
+                    Ver. 03<br vid="41">Systems
+                </div>
+            </div>
+        </div>
+
+        <div id="faqModal" class="hidden fixed inset-0 bg-black/90 backdrop-blur-md z-50 flex items-center justify-center p-5" onclick="if(event.target === this) this.classList.add('hidden')" vid="42">
+            <div class="bg-[#0a1628] border border-[#1dbf73]/50 shadow-[0_0_30px_rgba(29,191,115,0.15)] w-full max-w-md max-h-[80vh] overflow-y-auto rounded-lg" vid="43">
+                <div class="p-5 border-b border-[#1dbf73]/20 flex items-center justify-between sticky top-0 bg-[#0a1628] z-10" vid="44">
+                    <h3 class="text-[#1dbf73] font-bold uppercase tracking-widest text-sm flex items-center gap-2" vid="45">
+                        <i class="ph-fill ph-terminal-window" vid="46"></i> FAQ Systems
+                    </h3>
+                    <button onclick="document.getElementById('faqModal').classList.add('hidden')" class="text-[#1dbf73]/60 hover:text-[#40ffb0] transition-colors w-8 h-8 flex items-center justify-center rounded hover:bg-[#1dbf73]/10" vid="47">
+                        <i class="ph ph-x text-xl" vid="48"></i>
+                    </button>
+                </div>
+                <div class="p-6 space-y-5" vid="49">
+                    <div vid="50">
+                        <p class="text-[#1dbf73] text-[11px] font-bold uppercase tracking-wider mb-2 flex items-center gap-2">
+                            <i class="ph ph-caret-right"></i> Which platforms do you support?
+                        </p>
+                        <p class="text-white/80 text-sm pl-4 border-l border-[#1dbf73]/20">Twitter/X, Telegram, TikTok, Instagram, YouTube</p>
+                    </div>
+                    <div>
+                        <p class="text-[#1dbf73] text-[11px] font-bold uppercase tracking-wider mb-2 flex items-center gap-2">
+                            <i class="ph ph-caret-right"></i> How long does setup take?
+                        </p>
+                        <p class="text-white/80 text-sm pl-4 border-l border-[#1dbf73]/20">3-7 days depending on complexity</p>
+                    </div>
+                    <div>
+                        <p class="text-[#1dbf73] text-[11px] font-bold uppercase tracking-wider mb-2 flex items-center gap-2">
+                            <i class="ph ph-caret-right"></i> What do I need?
+                        </p>
+                        <p class="text-white/80 text-sm pl-4 border-l border-[#1dbf73]/20">Android phone + VPS or Windows PC</p>
+                    </div>
+                    <div>
+                        <p class="text-[#1dbf73] text-[11px] font-bold uppercase tracking-wider mb-2 flex items-center gap-2">
+                            <i class="ph ph-caret-right"></i> What is the price?
+                        </p>
+                        <p class="text-white/80 text-sm pl-4 border-l border-[#1dbf73]/20">Starting from $5. Message me before ordering.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="w-full bg-[#050b14] border-t border-[#1dbf73]/20 flex flex-col z-30 shrink-0 relative pb-10" vid="54">
+        <div class="p-3 flex flex-col gap-3" vid="55">
+            <div class="flex items-center justify-between" vid="56">
+                <div class="flex items-center gap-3 ml-2" vid="57">
+                    <div class="relative group" vid="58">
+                        <div class="asteroid-ring" vid="59">
+                            <div class="asteroid asteroid-1" vid="60"></div>
+                            <div class="asteroid asteroid-2" vid="61"></div>
+                            <div class="asteroid asteroid-3" vid="62"></div>
+                            <div class="asteroid asteroid-4" vid="63"></div>
+                            <div class="asteroid asteroid-5" vid="64"></div>
+                        </div>
+                        <img src="https://i.ibb.co/whSybwhX/avatar.jpg" class="relative z-10 w-14 h-14 rounded-full object-cover border-2 border-[#1dbf73] transition-transform duration-500 group-hover:scale-105" alt="Avatar" vid="65">
+                        <div class="absolute bottom-0 right-1 w-3 h-3 bg-[#1dbf73] rounded-full border-2 border-[#050b14] z-20 shadow-[0_0_8px_rgba(29,191,115,0.6)]" vid="66"></div>
+                    </div>
+                </div>
+                <div class="flex gap-2" vid="67">
+                    <a href="https://t.me/eilat_odessa" target="_blank" class="w-10 h-10 rounded-full bg-[#0a1628] flex items-center justify-center text-[#1dbf73] border border-[#1dbf73]/30 hover:bg-[#1dbf73] hover:text-[#0a1628] hover:border-[#1dbf73] hover:scale-110 transition-all duration-200 active:scale-95" vid="68"><i class="ph-fill ph-telegram-logo text-xl" vid="69"></i></a>
+                    <a href="https://instagram.com/rockford_serj" target="_blank" class="w-10 h-10 rounded-full bg-[#0a1628] flex items-center justify-center text-[#1dbf73] border border-[#1dbf73]/30 hover:bg-[#1dbf73] hover:text-[#0a1628] hover:border-[#1dbf73] hover:scale-110 transition-all duration-200 active:scale-95" vid="70"><i class="ph-fill ph-instagram-logo text-xl" vid="71"></i></a>
+                    <a href="https://x.com/0x_rckfrd" target="_blank" class="w-10 h-10 rounded-full bg-[#0a1628] flex items-center justify-center text-[#1dbf73] border border-[#1dbf73]/30 hover:bg-[#1dbf73] hover:text-[#0a1628] hover:border-[#1dbf73] hover:scale-110 transition-all duration-200 active:scale-95" vid="72"><i class="ph-fill ph-x-logo text-xl" vid="73"></i></a>
+                </div>
+            </div>
+
+            <a id="fiverrBtn" href="https://fiverr.com/serj_rockford" target="_blank" class="w-full h-11 bg-[#1dbf73] text-[#0a1628] font-bold uppercase tracking-[0.2em] text-[11px] rounded-md flex items-center justify-center gap-2 hover:bg-[#40ffb0] transition-colors active:scale-[0.98] group relative overflow-hidden shadow-[0_0_20px_rgba(29,191,115,0.3)]" vid="74">
+                <span class="relative z-10 flex items-center gap-2" vid="75">
+                    <i class="ph-fill ph-terminal text-base" vid="76"></i>
+                    ORDER ON FIVERR
+                </span>
+                <i class="ph ph-arrow-right text-base text-[#0a1628]/60 absolute right-5 group-hover:translate-x-1.5 transition-transform z-10" vid="77"></i>
+            </a>
+        </div>
+    </footer>
+
+    <script vid="78">
+        document.addEventListener('DOMContentLoaded', () => {
+            const btn = document.getElementById('fiverrBtn');
+            const overlay = document.getElementById('terminalOverlay');
+            const terminalText = document.getElementById('terminalText');
+            const platformsList = document.getElementById('platformsList');
+            const workText = document.getElementById('workText');
+            const projectsText = document.getElementById('projectsText');
+
+            let typingInterval;
+            let isHovering = false;
+
+            const commands = [
+                '> Initializing...', '> [OK] Fiverr API', '> Loading modules...',
+                '> [OK] auto_core', '> [OK] tg_bot_v2', '> [OK] social_eng',
+                '> Verifying...', '> [OK] Connected', '> Deploying...',
+                '> [SUCCESS] Ready', '> _'
+            ];
+
+            function typeText(text, speed = 15) {
+                return new Promise(resolve => {
+                    const line = document.createElement('div');
+                    terminalText.appendChild(line);
+                    let i = 0;
+                    typingInterval = setInterval(() => {
+                        if (!isHovering) { clearInterval(typingInterval); resolve(); return; }
+                        line.textContent += text.charAt(i);
+                        i++;
+                        if (i >= text.length) { clearInterval(typingInterval); resolve(); }
+                    }, speed);
+                });
+            }
+
+            async function startAnimation() {
+                terminalText.innerHTML = '';
+                overlay.style.opacity = '1';
+                for (const cmd of commands) {
+                    if (!isHovering) break;
+                    await typeText(cmd);
+                    if (isHovering) terminalText.innerHTML += '<br>';
+                }
+            }
+
+            function stopAnimation() {
+                isHovering = false;
+                clearInterval(typingInterval);
+                overlay.style.opacity = '0';
+                setTimeout(() => { terminalText.innerHTML = ''; }, 300);
+                workText.classList.remove('border-b-[3px]', 'border-[#1dbf73]', 'pb-[2px]');
+                projectsText.classList.add('border-b-[3px]', 'border-[#1dbf73]', 'pb-[2px]');
+                if(platformsList) platformsList.style.transform = 'translateX(0)';
+            }
+
+            btn.addEventListener('mouseenter', () => {
+                isHovering = true;
+                startAnimation();
+                if(platformsList) platformsList.style.transform = 'translateX(120%)';
+                workText.classList.add('border-b-[3px]', 'border-[#1dbf73]', 'pb-[2px]');
+                projectsText.classList.remove('border-b-[3px]', 'border-[#1dbf73]', 'pb-[2px]');
+            });
+            btn.addEventListener('mouseleave', stopAnimation);
+        });
+    </script>
+</body></html>
