@@ -334,17 +334,9 @@
                 if (platformsList) platformsList.style.transform = 'translateX(0)';
             }
 
-            // Desktop: hover
+            // Desktop only: hover terminal animation
             btn.addEventListener('mouseenter', () => { isActive = true; startTerminal(); });
             btn.addEventListener('mouseleave', stopTerminal);
-
-            // Mobile: hold to show terminal, release to hide
-            btn.addEventListener('touchstart', e => {
-                e.preventDefault();
-                isActive = true;
-                startTerminal();
-            }, {passive: false});
-            btn.addEventListener('touchend', () => setTimeout(stopTerminal, 800));
         });
     </script>
 </body></html>
