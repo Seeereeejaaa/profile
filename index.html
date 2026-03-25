@@ -114,9 +114,9 @@
             </div>
 
             <!-- Center content -->
-            <div class="flex-1 flex items-stretch justify-between relative z-10 overflow-hidden min-h-0" vid="20">
-                <div class="flex items-center overflow-hidden">
-                <h1 class="vertical-text font-display text-[72px] leading-[0.8] uppercase tracking-normal text-[#1dbf73] text-center text-glow transition-all duration-500 cursor-pointer max-h-full" id="autoText" vid="21">
+            <div class="flex-1 flex items-center justify-between relative z-10 overflow-hidden min-h-0" id="centerArea" vid="20">
+                <div class="overflow-hidden flex items-center justify-center" id="autoWrapper">
+                <h1 class="vertical-text font-display text-[72px] leading-[0.8] uppercase tracking-normal text-[#1dbf73] text-center text-glow transition-all duration-500 cursor-pointer" id="autoText" vid="21">
                     Automation
                 </h1>
                 </div>
@@ -245,6 +245,19 @@
 
     <script>
         if (window.Telegram?.WebApp) window.Telegram.WebApp.expand();
+
+        // Fix vertical text height on any screen
+        function fixLayout() {
+            const center = document.getElementById('centerArea');
+            const wrapper = document.getElementById('autoWrapper');
+            if (center && wrapper) {
+                const h = center.offsetHeight;
+                wrapper.style.height = h + 'px';
+                wrapper.style.maxHeight = h + 'px';
+            }
+        }
+        window.addEventListener('load', fixLayout);
+        window.addEventListener('resize', fixLayout);
 
         document.addEventListener('DOMContentLoaded', () => {
             // --- Platform icons: auto sequential color cycle ---
