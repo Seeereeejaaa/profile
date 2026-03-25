@@ -103,69 +103,52 @@
         <div class="text-[11px] font-mono tracking-widest text-[#1dbf73]/60" vid="13">SYS_READY</div>
     </header>
 
-    <main class="flex-1 w-full relative overflow-hidden bg-brand-dark" vid="14">
+    <main class="flex-1 w-full relative bg-[#0a1628]" vid="14">
+        <div class="absolute inset-0 bg-grid opacity-50"></div>
 
-        <div class="w-full h-full bg-[#0a1628] relative flex flex-col p-5" vid="15">
-            <div class="absolute inset-0 z-0 bg-grid opacity-50" vid="16"></div>
+        <!-- WORK/PROJECTS: top right -->
+        <div id="menuToggle" class="absolute top-3 right-4 z-10 text-[#1dbf73] text-[10px] font-bold tracking-[0.15em] flex items-center gap-2">
+            <span id="workText" class="transition-all duration-300">WORK</span> / <span id="projectsText" class="border-b-[3px] border-[#1dbf73] pb-[2px] transition-all duration-300">PROJECTS</span>
+        </div>
 
-            <!-- Top label -->
-            <div id="menuToggle" class="text-[#1dbf73] text-[10px] font-bold tracking-[0.15em] relative z-10 text-right flex items-center justify-end gap-2 shrink-0" vid="17">
-                <span id="workText" class="transition-all duration-300" vid="18">WORK</span> / <span id="projectsText" class="border-b-[3px] border-[#1dbf73] pb-[2px] transition-all duration-300" vid="19">PROJECTS</span>
+        <!-- AUTOMATION: absolute left, JS centered -->
+        <div id="autoWrapper" class="absolute left-5 z-10" style="top:50%; transform:translateY(-50%);">
+            <h1 class="vertical-text font-display text-[72px] leading-[0.8] uppercase tracking-normal text-[#1dbf73] text-glow transition-all duration-500" id="autoText">Automation</h1>
+        </div>
+
+        <!-- Platforms: absolute right, JS centered -->
+        <div id="platformsList" class="absolute right-4 z-10 flex flex-col items-end gap-3 font-bold text-[28px] uppercase tracking-[0.08em] text-right text-white/90 transition-transform duration-500" style="font-family:'Syne',sans-serif; top:50%; transform:translateY(-50%);">
+            <div class="platform-item flex items-center gap-3 cursor-default transition-all duration-200 origin-right">
+                <i class="ph-fill ph-tiktok-logo text-lg transition-colors duration-200" style="color:rgba(255,255,255,0.4);" data-color="#ff0050"></i><span>TIKTOK</span>
             </div>
-
-            <!-- Center content -->
-            <div class="flex-1 relative z-10 min-h-0 overflow-hidden" id="centerArea" vid="20">
-
-                <!-- AUTOMATION vertical text: absolute centered left -->
-                <div style="position:absolute; left:20px; top:50%; transform:translateY(-50%); max-height:90%; overflow:hidden; display:flex; align-items:center;">
-                <h1 class="vertical-text font-display text-[72px] leading-[0.8] uppercase tracking-normal text-[#1dbf73] text-center text-glow transition-all duration-500 cursor-pointer" id="autoText" vid="21">
-                    Automation
-                </h1>
-                </div>
-
-                <!-- Platforms list: absolute centered right -->
-                <div id="platformsList" class="flex flex-col items-end gap-3 font-bold text-[28px] uppercase tracking-[0.08em] text-right text-white/90 transition-transform duration-500" style="font-family:'Syne',sans-serif; position:absolute; right:20px; top:50%; transform:translateY(-50%);" vid="22">
-                    <div class="platform-item flex items-center gap-3 cursor-default transition-all duration-200 origin-right" vid="23">
-                        <i class="ph-fill ph-tiktok-logo text-lg transition-colors duration-200" style="color: rgba(255,255,255,0.4);" data-color="#ff0050"></i>
-                        <span>TIKTOK</span>
-                    </div>
-                    <div class="platform-item flex items-center gap-3 cursor-default transition-all duration-200 origin-right" vid="25">
-                        <i class="ph-fill ph-youtube-logo text-lg transition-colors duration-200" style="color: rgba(255,255,255,0.4);" data-color="#FF0000"></i>
-                        <span>YOUTUBE</span>
-                    </div>
-                    <div class="platform-item flex items-center gap-3 cursor-default transition-all duration-200 origin-right" vid="27">
-                        <i class="ph-fill ph-x-logo text-lg transition-colors duration-200" style="color: rgba(255,255,255,0.4);" data-color="#ffffff"></i>
-                        <span>TWITTER</span>
-                    </div>
-                    <div class="platform-item flex items-center gap-3 cursor-default transition-all duration-200 origin-right" vid="29">
-                        <i class="ph-fill ph-telegram-logo text-lg transition-colors duration-200" style="color: rgba(255,255,255,0.4);" data-color="#2AABEE"></i>
-                        <span>TELEGRAM</span>
-                    </div>
-                    <div class="platform-item flex items-center gap-3 cursor-default transition-all duration-200 origin-right" vid="31">
-                        <i class="ph-fill ph-instagram-logo text-lg transition-colors duration-200" style="color: rgba(255,255,255,0.4);" data-color="#E1306C"></i>
-                        <span>INSTAGRAM</span>
-                    </div>
-                    <div class="platform-item flex items-center gap-3 cursor-default transition-all duration-200 origin-right" vid="33">
-                        <i class="ph-fill ph-chat-centered-text text-lg transition-colors duration-200" style="color: rgba(255,255,255,0.4);" data-color="#000000"></i>
-                        <span>THREADS</span>
-                    </div>
-                </div>
-
-                <div id="terminalOverlay" class="absolute top-0 right-0 bottom-0 w-[65%] bg-[#0a1628]/95 backdrop-blur-sm z-20 opacity-0 pointer-events-none transition-opacity duration-300 flex items-start justify-start p-4 font-mono text-[11px] border-l border-[#1dbf73]/50 overflow-hidden" vid="35">
-                    <div id="terminalText" class="text-[#1dbf73] leading-relaxed w-full" vid="36"></div>
-                </div>
+            <div class="platform-item flex items-center gap-3 cursor-default transition-all duration-200 origin-right">
+                <i class="ph-fill ph-youtube-logo text-lg transition-colors duration-200" style="color:rgba(255,255,255,0.4);" data-color="#FF0000"></i><span>YOUTUBE</span>
             </div>
-
-
-            <!-- Bottom FAQ row -->
-            <div class="relative z-10 flex justify-between items-center shrink-0 pb-2 text-[#1dbf73]" vid="37">
-                <button onclick="document.getElementById('faqModal').classList.remove('hidden')" class="w-10 h-10 border-2 border-[#1dbf73] rounded flex items-center justify-center transition-colors active:scale-95 active:bg-[#1dbf73] active:text-[#0a1628] bg-[#0a1628]/80" vid="38">
-                    <i class="ph ph-question text-lg" vid="39"></i>
-                </button>
-                <div class="text-[9px] font-bold uppercase opacity-80 leading-tight tracking-wider text-right" vid="40">
-                    Ver. 03<br vid="41">Systems
-                </div>
+            <div class="platform-item flex items-center gap-3 cursor-default transition-all duration-200 origin-right">
+                <i class="ph-fill ph-x-logo text-lg transition-colors duration-200" style="color:rgba(255,255,255,0.4);" data-color="#ffffff"></i><span>TWITTER</span>
             </div>
+            <div class="platform-item flex items-center gap-3 cursor-default transition-all duration-200 origin-right">
+                <i class="ph-fill ph-telegram-logo text-lg transition-colors duration-200" style="color:rgba(255,255,255,0.4);" data-color="#2AABEE"></i><span>TELEGRAM</span>
+            </div>
+            <div class="platform-item flex items-center gap-3 cursor-default transition-all duration-200 origin-right">
+                <i class="ph-fill ph-instagram-logo text-lg transition-colors duration-200" style="color:rgba(255,255,255,0.4);" data-color="#E1306C"></i><span>INSTAGRAM</span>
+            </div>
+            <div class="platform-item flex items-center gap-3 cursor-default transition-all duration-200 origin-right">
+                <i class="ph-fill ph-chat-centered-text text-lg transition-colors duration-200" style="color:rgba(255,255,255,0.4);" data-color="#000000"></i><span>THREADS</span>
+            </div>
+        </div>
+
+        <!-- Terminal overlay -->
+        <div id="terminalOverlay" class="absolute top-0 right-0 bottom-0 w-[65%] bg-[#0a1628]/95 backdrop-blur-sm z-20 opacity-0 pointer-events-none transition-opacity duration-300 flex items-start p-4 font-mono text-[11px] border-l border-[#1dbf73]/50 overflow-hidden">
+            <div id="terminalText" class="text-[#1dbf73] leading-relaxed w-full"></div>
+        </div>
+
+        <!-- FAQ button: bottom left -->
+        <div class="absolute bottom-3 left-4 right-4 z-10 flex justify-between items-center text-[#1dbf73]">
+            <button onclick="document.getElementById('faqModal').classList.remove('hidden')" class="w-10 h-10 border-2 border-[#1dbf73] rounded flex items-center justify-center active:scale-95 active:bg-[#1dbf73] active:text-[#0a1628] bg-[#0a1628]/80">
+                <i class="ph ph-question text-lg"></i>
+            </button>
+            <div class="text-[9px] font-bold uppercase opacity-80 leading-tight tracking-wider text-right">Ver. 03<br>Systems</div>
         </div>
 
         <div id="faqModal" class="hidden fixed inset-0 bg-black/90 backdrop-blur-md z-50 flex items-center justify-center p-5" onclick="if(event.target === this) this.classList.add('hidden')" vid="42">
