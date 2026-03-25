@@ -148,7 +148,7 @@
             </div>
 
             <div class="absolute inset-0 flex items-center justify-between z-10 overflow-hidden px-5" vid="20">
-                <h1 class="vertical-text font-display text-[72px] leading-[0.8] uppercase tracking-normal text-[#1dbf73] text-center text-glow ml-5 hover:text-[#40ffb0] hover:drop-shadow-[0_0_40px_rgba(29,191,115,1)] transition-all duration-500 cursor-pointer" vid="21">
+                <h1 class="vertical-text font-display text-[72px] leading-[0.8] uppercase tracking-normal text-[#1dbf73] text-center text-glow ml-5 transition-all duration-500 cursor-pointer" id="autoText" vid="21">
                     Automation
                 </h1>
 
@@ -185,8 +185,8 @@
             </div>
 
             <div class="relative z-10 flex justify-between items-end mb-4 text-[#1dbf73]" vid="37">
-                <button onclick="document.getElementById('faqModal').classList.remove('hidden')" class="w-10 h-10 border-2 border-[#1dbf73] rounded flex items-center justify-center hover:bg-[#1dbf73] hover:text-[#0a1628] transition-colors active:scale-95 group bg-[#0a1628]/80 backdrop-blur-sm" vid="38">
-                    <i class="ph ph-arrow-up-right text-lg group-hover:rotate-45 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" vid="39"></i>
+                <button onclick="document.getElementById('faqModal').classList.remove('hidden')" class="w-10 h-10 border-2 border-[#1dbf73] rounded flex items-center justify-center transition-colors active:scale-95 active:bg-[#1dbf73] active:text-[#0a1628] bg-[#0a1628]/80 backdrop-blur-sm" vid="38">
+                    <i class="ph ph-arrow-up-right text-lg transition-all duration-300" vid="39"></i>
                 </button>
                 <div class="text-[9px] font-bold uppercase opacity-80 leading-tight tracking-wider text-right" vid="40">
                     Ver. 03<br vid="41">Systems
@@ -200,7 +200,7 @@
                     <h3 class="text-[#1dbf73] font-bold uppercase tracking-widest text-sm flex items-center gap-2" vid="45">
                         <i class="ph-fill ph-terminal-window" vid="46"></i> FAQ Systems
                     </h3>
-                    <button onclick="document.getElementById('faqModal').classList.add('hidden')" class="text-[#1dbf73]/60 hover:text-[#40ffb0] transition-colors w-8 h-8 flex items-center justify-center rounded hover:bg-[#1dbf73]/10" vid="47">
+                    <button onclick="document.getElementById('faqModal').classList.add('hidden')" class="text-[#1dbf73]/60 active:text-[#40ffb0] transition-colors w-8 h-8 flex items-center justify-center rounded active:bg-[#1dbf73]/10" vid="47">
                         <i class="ph ph-x text-xl" vid="48"></i>
                     </button>
                 </div>
@@ -257,18 +257,18 @@
                     </div>
                 </div>
                 <div class="flex gap-2" vid="67">
-                    <a href="https://t.me/eilat_odessa" target="_blank" class="w-10 h-10 rounded-full bg-[#0a1628] flex items-center justify-center text-[#1dbf73] border border-[#1dbf73]/30 hover:bg-[#1dbf73] hover:text-[#0a1628] hover:border-[#1dbf73] hover:scale-110 transition-all duration-200 active:scale-95" vid="68"><i class="ph-fill ph-telegram-logo text-xl" vid="69"></i></a>
-                    <a href="https://instagram.com/rockford_serj" target="_blank" class="w-10 h-10 rounded-full bg-[#0a1628] flex items-center justify-center text-[#1dbf73] border border-[#1dbf73]/30 hover:bg-[#1dbf73] hover:text-[#0a1628] hover:border-[#1dbf73] hover:scale-110 transition-all duration-200 active:scale-95" vid="70"><i class="ph-fill ph-instagram-logo text-xl" vid="71"></i></a>
-                    <a href="https://x.com/0x_rckfrd" target="_blank" class="w-10 h-10 rounded-full bg-[#0a1628] flex items-center justify-center text-[#1dbf73] border border-[#1dbf73]/30 hover:bg-[#1dbf73] hover:text-[#0a1628] hover:border-[#1dbf73] hover:scale-110 transition-all duration-200 active:scale-95" vid="72"><i class="ph-fill ph-x-logo text-xl" vid="73"></i></a>
+                    <a href="https://t.me/eilat_odessa" target="_blank" class="w-10 h-10 rounded-full bg-[#0a1628] flex items-center justify-center text-[#1dbf73] border border-[#1dbf73]/30 transition-all duration-200 active:bg-[#1dbf73] active:text-[#0a1628] active:scale-95" vid="68"><i class="ph-fill ph-telegram-logo text-xl" vid="69"></i></a>
+                    <a href="https://instagram.com/rockford_serj" target="_blank" class="w-10 h-10 rounded-full bg-[#0a1628] flex items-center justify-center text-[#1dbf73] border border-[#1dbf73]/30 transition-all duration-200 active:bg-[#1dbf73] active:text-[#0a1628] active:scale-95" vid="70"><i class="ph-fill ph-instagram-logo text-xl" vid="71"></i></a>
+                    <a href="https://x.com/0x_rckfrd" target="_blank" class="w-10 h-10 rounded-full bg-[#0a1628] flex items-center justify-center text-[#1dbf73] border border-[#1dbf73]/30 transition-all duration-200 active:bg-[#1dbf73] active:text-[#0a1628] active:scale-95" vid="72"><i class="ph-fill ph-x-logo text-xl" vid="73"></i></a>
                 </div>
             </div>
 
-            <a id="fiverrBtn" href="https://fiverr.com/serj_rockford" target="_blank" class="w-full h-11 bg-[#1dbf73] text-[#0a1628] font-bold uppercase tracking-[0.2em] text-[11px] rounded-md flex items-center justify-center gap-2 hover:bg-[#40ffb0] transition-colors active:scale-[0.98] group relative overflow-hidden shadow-[0_0_20px_rgba(29,191,115,0.3)]" vid="74">
+            <a id="fiverrBtn" href="https://fiverr.com/serj_rockford" target="_blank" class="w-full h-11 bg-[#1dbf73] text-[#0a1628] font-bold uppercase tracking-[0.2em] text-[11px] rounded-md flex items-center justify-center gap-2 transition-colors active:bg-[#40ffb0] active:scale-[0.98] relative overflow-hidden shadow-[0_0_20px_rgba(29,191,115,0.3)]" vid="74">
                 <span class="relative z-10 flex items-center gap-2" vid="75">
                     <i class="ph-fill ph-terminal text-base" vid="76"></i>
                     ORDER ON FIVERR
                 </span>
-                <i class="ph ph-arrow-right text-base text-[#0a1628]/60 absolute right-5 group-hover:translate-x-1.5 transition-transform z-10" vid="77"></i>
+                <i class="ph ph-arrow-right text-base text-[#0a1628]/60 absolute right-5 z-10" vid="77"></i>
             </a>
         </div>
     </footer>
@@ -276,33 +276,40 @@
     <script>
         if (window.Telegram?.WebApp) window.Telegram.WebApp.expand();
 
-        // Platform icon color on hover/touch
-        document.querySelectorAll('.platform-item').forEach(item => {
-            const icon = item.querySelector('i');
-            const brandColor = icon.dataset.color;
-
-            const activate = () => { icon.style.color = brandColor; item.style.transform = 'scale(1.1)'; };
-            const deactivate = () => { icon.style.color = 'rgba(255,255,255,0.4)'; item.style.transform = ''; };
-
-            item.addEventListener('mouseenter', activate);
-            item.addEventListener('mouseleave', deactivate);
-            item.addEventListener('touchstart', activate, {passive: true});
-            item.addEventListener('touchend', () => setTimeout(deactivate, 300), {passive: true});
-        });
-
-        // Touch for asteroid group
-        document.addEventListener('touchstart', function(e) {
-            const g = e.target.closest('.group');
-            if (g) g.classList.add('touched');
-            const vt = e.target.closest('.vertical-text');
-            if (vt) vt.classList.add('touched');
-        }, {passive: true});
-        document.addEventListener('touchend', function() {
-            setTimeout(() => document.querySelectorAll('.touched').forEach(el => el.classList.remove('touched')), 300);
-        }, {passive: true});
-    </script>
-    <script vid="78">
         document.addEventListener('DOMContentLoaded', () => {
+            // --- Platform icons: brand color on tap ---
+            document.querySelectorAll('.platform-item').forEach(item => {
+                const icon = item.querySelector('i');
+                const brandColor = icon.dataset.color;
+                const on  = () => { icon.style.color = brandColor; item.style.transform = 'scale(1.1)'; };
+                const off = () => { icon.style.color = 'rgba(255,255,255,0.4)'; item.style.transform = ''; };
+                item.addEventListener('touchstart', on,  {passive: true});
+                item.addEventListener('touchend',   () => setTimeout(off, 300), {passive: true});
+                item.addEventListener('mouseenter', on);
+                item.addEventListener('mouseleave', off);
+            });
+
+            // --- Automation text: glow on tap ---
+            const autoText = document.getElementById('autoText');
+            if (autoText) {
+                const onA  = () => { autoText.style.color = '#40ffb0'; autoText.style.filter = 'drop-shadow(0 0 40px rgba(29,191,115,1))'; };
+                const offA = () => { autoText.style.color = ''; autoText.style.filter = ''; };
+                autoText.addEventListener('touchstart', onA, {passive: true});
+                autoText.addEventListener('touchend', () => setTimeout(offA, 400), {passive: true});
+                autoText.addEventListener('mouseenter', onA);
+                autoText.addEventListener('mouseleave', offA);
+            }
+
+            // --- Avatar asteroids on tap ---
+            document.addEventListener('touchstart', e => {
+                const g = e.target.closest('.group');
+                if (g) g.classList.add('touched');
+            }, {passive: true});
+            document.addEventListener('touchend', () => {
+                setTimeout(() => document.querySelectorAll('.group.touched').forEach(el => el.classList.remove('touched')), 500);
+            }, {passive: true});
+
+            // --- Fiverr button: terminal on tap (toggle) ---
             const btn = document.getElementById('fiverrBtn');
             const overlay = document.getElementById('terminalOverlay');
             const terminalText = document.getElementById('terminalText');
@@ -310,8 +317,7 @@
             const workText = document.getElementById('workText');
             const projectsText = document.getElementById('projectsText');
 
-            let typingInterval;
-            let isHovering = false;
+            let typingInterval, isActive = false;
 
             const commands = [
                 '> Initializing...', '> [OK] Fiverr API', '> Loading modules...',
@@ -320,48 +326,53 @@
                 '> [SUCCESS] Ready', '> _'
             ];
 
-            function typeText(text, speed = 15) {
+            function typeText(text) {
                 return new Promise(resolve => {
                     const line = document.createElement('div');
                     terminalText.appendChild(line);
                     let i = 0;
                     typingInterval = setInterval(() => {
-                        if (!isHovering) { clearInterval(typingInterval); resolve(); return; }
-                        line.textContent += text.charAt(i);
-                        i++;
+                        if (!isActive) { clearInterval(typingInterval); resolve(); return; }
+                        line.textContent += text.charAt(i++);
                         if (i >= text.length) { clearInterval(typingInterval); resolve(); }
-                    }, speed);
+                    }, 15);
                 });
             }
 
-            async function startAnimation() {
+            async function startTerminal() {
                 terminalText.innerHTML = '';
                 overlay.style.opacity = '1';
+                if (platformsList) platformsList.style.transform = 'translateX(120%)';
+                workText.classList.add('border-b-[3px]', 'border-[#1dbf73]', 'pb-[2px]');
+                projectsText.classList.remove('border-b-[3px]', 'border-[#1dbf73]', 'pb-[2px]');
                 for (const cmd of commands) {
-                    if (!isHovering) break;
+                    if (!isActive) break;
                     await typeText(cmd);
-                    if (isHovering) terminalText.innerHTML += '<br>';
+                    if (isActive) terminalText.innerHTML += '<br>';
                 }
             }
 
-            function stopAnimation() {
-                isHovering = false;
+            function stopTerminal() {
+                isActive = false;
                 clearInterval(typingInterval);
                 overlay.style.opacity = '0';
                 setTimeout(() => { terminalText.innerHTML = ''; }, 300);
                 workText.classList.remove('border-b-[3px]', 'border-[#1dbf73]', 'pb-[2px]');
                 projectsText.classList.add('border-b-[3px]', 'border-[#1dbf73]', 'pb-[2px]');
-                if(platformsList) platformsList.style.transform = 'translateX(0)';
+                if (platformsList) platformsList.style.transform = 'translateX(0)';
             }
 
-            btn.addEventListener('mouseenter', () => {
-                isHovering = true;
-                startAnimation();
-                if(platformsList) platformsList.style.transform = 'translateX(120%)';
-                workText.classList.add('border-b-[3px]', 'border-[#1dbf73]', 'pb-[2px]');
-                projectsText.classList.remove('border-b-[3px]', 'border-[#1dbf73]', 'pb-[2px]');
-            });
-            btn.addEventListener('mouseleave', stopAnimation);
+            // Desktop: hover
+            btn.addEventListener('mouseenter', () => { isActive = true; startTerminal(); });
+            btn.addEventListener('mouseleave', stopTerminal);
+
+            // Mobile: hold to show terminal, release to hide
+            btn.addEventListener('touchstart', e => {
+                e.preventDefault();
+                isActive = true;
+                startTerminal();
+            }, {passive: false});
+            btn.addEventListener('touchend', () => setTimeout(stopTerminal, 800));
         });
     </script>
 </body></html>
