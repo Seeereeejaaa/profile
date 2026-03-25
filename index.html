@@ -220,7 +220,7 @@
                 </div>
             </div>
 
-            <a id="fiverrBtn" href="https://fiverr.com/serj_rockford" target="_blank" onclick="if(window.Telegram?.WebApp){event.preventDefault();Telegram.WebApp.openLink('https://fiverr.com/serj_rockford');}" class="w-full h-11 bg-[#1dbf73] text-[#0a1628] font-bold uppercase tracking-[0.2em] text-[11px] rounded-md flex items-center justify-center gap-2 transition-colors active:bg-[#40ffb0] active:scale-[0.98] relative overflow-hidden shadow-[0_0_20px_rgba(29,191,115,0.3)]" vid="74">
+            <a id="fiverrBtn" href="https://fiverr.com/serj_rockford" target="_blank" class="w-full h-11 bg-[#1dbf73] text-[#0a1628] font-bold uppercase tracking-[0.2em] text-[11px] rounded-md flex items-center justify-center gap-2 transition-colors active:bg-[#40ffb0] active:scale-[0.98] relative overflow-hidden shadow-[0_0_20px_rgba(29,191,115,0.3)]" vid="74">
                 <span class="relative z-10 flex items-center gap-2" vid="75">
                     <i class="ph-fill ph-terminal text-base" vid="76"></i>
                     ORDER ON FIVERR
@@ -348,11 +348,7 @@
                 startTerminal().then(() => {
                     setTimeout(() => {
                         stopTerminal();
-                        if (window.Telegram?.WebApp) {
-                            Telegram.WebApp.openLink('https://fiverr.com/serj_rockford');
-                        } else {
-                            window.open('https://fiverr.com/serj_rockford', '_blank');
-                        }
+                        window.open('https://fiverr.com/serj_rockford', '_blank');
                     }, 500);
                 });
             }, {passive: false});
