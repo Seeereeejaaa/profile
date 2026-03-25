@@ -277,17 +277,31 @@
         if (window.Telegram?.WebApp) window.Telegram.WebApp.expand();
 
         document.addEventListener('DOMContentLoaded', () => {
-            // --- Platform icons: brand color on tap ---
-            document.querySelectorAll('.platform-item').forEach(item => {
-                const icon = item.querySelector('i');
-                const brandColor = icon.dataset.color;
-                const on  = () => { icon.style.color = brandColor; item.style.transform = 'scale(1.1)'; };
-                const off = () => { icon.style.color = 'rgba(255,255,255,0.4)'; item.style.transform = ''; };
-                item.addEventListener('touchstart', on,  {passive: true});
-                item.addEventListener('touchend',   () => setTimeout(off, 300), {passive: true});
-                item.addEventListener('mouseenter', on);
-                item.addEventListener('mouseleave', off);
-            });
+            // --- Platform icons: auto sequential color cycle ---
+            const items = document.querySelectorAll('.platform-item');
+            let current = 0;
+
+            function highlightNext() {
+                items.forEach((item, idx) => {
+                    const icon = item.querySelector('i');
+                    const span = item.querySelector('span');
+                    if (idx === current) {
+                        icon.style.color = icon.dataset.color;
+                        icon.style.transform = 'scale(1.3)';
+                        span.style.color = icon.dataset.color;
+                        item.style.transform = 'scale(1.05)';
+                    } else {
+                        icon.style.color = 'rgba(255,255,255,0.4)';
+                        icon.style.transform = '';
+                        span.style.color = '';
+                        item.style.transform = '';
+                    }
+                });
+                current = (current + 1) % items.length;
+            }
+
+            highlightNext();
+            setInterval(highlightNext, 600);
 
             // --- Automation text: glow on tap ---
             const autoText = document.getElementById('autoText');
