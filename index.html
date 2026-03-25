@@ -334,9 +334,28 @@
                 if (platformsList) platformsList.style.transform = 'translateX(0)';
             }
 
-            // Desktop only: hover terminal animation
+            // Desktop: hover
             btn.addEventListener('mouseenter', () => { isActive = true; startTerminal(); });
             btn.addEventListener('mouseleave', stopTerminal);
+
+            // Mobile: tap → animate → open link
+            btn.addEventListener('touchstart', e => {
+                e.preventDefault();
+                isActive = true;
+                if (platformsList) platformsList.style.transform = 'translateX(120%)';
+                workText.classList.add('border-b-[3px]', 'border-[#1dbf73]', 'pb-[2px]');
+                projectsText.classList.remove('border-b-[3px]', 'border-[#1dbf73]', 'pb-[2px]');
+                startTerminal().then(() => {
+                    setTimeout(() => {
+                        stopTerminal();
+                        if (window.Telegram?.WebApp) {
+                            Telegram.WebApp.openLink('https://fiverr.com/serj_rockford');
+                        } else {
+                            window.open('https://fiverr.com/serj_rockford', '_blank');
+                        }
+                    }, 500);
+                });
+            }, {passive: false});
         });
     </script>
 </body></html>
