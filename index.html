@@ -348,7 +348,11 @@
                 startTerminal().then(() => {
                     setTimeout(() => {
                         stopTerminal();
-                        window.open('https://fiverr.com/serj_rockford', '_blank');
+                        if (window.Telegram?.WebApp?.openLink) {
+                            window.Telegram.WebApp.openLink('https://fiverr.com/serj_rockford');
+                        } else {
+                            window.open('https://fiverr.com/serj_rockford', '_blank');
+                        }
                     }, 500);
                 });
             }, {passive: false});
