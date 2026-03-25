@@ -88,44 +88,6 @@
         @keyframes orbit4 { 0% { transform: rotate(270deg) translateX(70px) rotateX(45deg); z-index: -1; } 50% { z-index: 10; } 100% { transform: rotate(630deg) translateX(70px) rotateX(45deg); z-index: -1; } }
         @keyframes orbit5 { 0% { transform: rotate(45deg) translateX(85px) rotateX(45deg); z-index: -1; } 50% { z-index: 10; } 100% { transform: rotate(405deg) translateX(85px) rotateX(45deg); z-index: -1; } }
 
-        .glitch {
-            position: relative;
-        }
-        .glitch::before,
-        .glitch::after {
-            content: attr(data-text);
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-        }
-        .glitch::before {
-            color: #ff0055;
-            animation: glitch-before 2s infinite;
-            clip-path: polygon(0 20%, 100% 20%, 100% 40%, 0 40%);
-        }
-        .glitch::after {
-            color: #00ffcc;
-            animation: glitch-after 2s infinite;
-            clip-path: polygon(0 60%, 100% 60%, 100% 80%, 0 80%);
-        }
-        @keyframes glitch-before {
-            0%, 40%, 100% { opacity: 0; transform: none; }
-            42% { opacity: 1; transform: translateX(-3px); }
-            44% { opacity: 1; transform: translateX(3px); }
-            46% { opacity: 0; }
-            70%, 72% { opacity: 1; transform: translateX(-2px); }
-            74% { opacity: 0; }
-        }
-        @keyframes glitch-after {
-            0%, 40%, 100% { opacity: 0; transform: none; }
-            43% { opacity: 1; transform: translateX(3px); }
-            45% { opacity: 1; transform: translateX(-2px); }
-            47% { opacity: 0; }
-            71%, 73% { opacity: 1; transform: translateX(2px); }
-            75% { opacity: 0; }
-        }
     </style>
 </head>
 <body class="w-full text-white font-sans flex flex-col relative select-none overflow-hidden bg-black" style="height: 100dvh;" vid="10">
@@ -155,27 +117,27 @@
                 <div id="platformsList" class="flex flex-col items-end gap-3 font-bold text-[28px] uppercase tracking-[0.08em] text-right text-white/90 transition-transform duration-500" style="font-family: 'Syne', sans-serif;" vid="22">
                     <div class="platform-item flex items-center gap-3 cursor-default transition-all duration-200 origin-right active:scale-110" vid="23">
                         <i class="ph-fill ph-tiktok-logo text-lg transition-colors duration-200" style="color: rgba(255,255,255,0.4);" data-color="#ff0050"></i>
-                        <span class="glitch" data-text="TIKTOK">TIKTOK</span>
+                        <span>TIKTOK</span>
                     </div>
                     <div class="platform-item flex items-center gap-3 cursor-default transition-all duration-200 origin-right active:scale-110" vid="25">
                         <i class="ph-fill ph-youtube-logo text-lg transition-colors duration-200" style="color: rgba(255,255,255,0.4);" data-color="#FF0000"></i>
-                        <span class="glitch" data-text="YOUTUBE">YOUTUBE</span>
+                        <span>YOUTUBE</span>
                     </div>
                     <div class="platform-item flex items-center gap-3 cursor-default transition-all duration-200 origin-right active:scale-110" vid="27">
                         <i class="ph-fill ph-x-logo text-lg transition-colors duration-200" style="color: rgba(255,255,255,0.4);" data-color="#ffffff"></i>
-                        <span class="glitch" data-text="TWITTER">TWITTER</span>
+                        <span>TWITTER</span>
                     </div>
                     <div class="platform-item flex items-center gap-3 cursor-default transition-all duration-200 origin-right active:scale-110" vid="29">
                         <i class="ph-fill ph-telegram-logo text-lg transition-colors duration-200" style="color: rgba(255,255,255,0.4);" data-color="#2AABEE"></i>
-                        <span class="glitch" data-text="TELEGRAM">TELEGRAM</span>
+                        <span>TELEGRAM</span>
                     </div>
                     <div class="platform-item flex items-center gap-3 cursor-default transition-all duration-200 origin-right active:scale-110" vid="31">
                         <i class="ph-fill ph-instagram-logo text-lg transition-colors duration-200" style="color: rgba(255,255,255,0.4);" data-color="#E1306C"></i>
-                        <span class="glitch" data-text="INSTAGRAM">INSTAGRAM</span>
+                        <span>INSTAGRAM</span>
                     </div>
                     <div class="platform-item flex items-center gap-3 cursor-default transition-all duration-200 origin-right active:scale-110" vid="33">
                         <i class="ph-fill ph-chat-centered-text text-lg transition-colors duration-200" style="color: rgba(255,255,255,0.4);" data-color="#000000"></i>
-                        <span class="glitch" data-text="THREADS">THREADS</span>
+                        <span>THREADS</span>
                     </div>
                 </div>
             </div>
